@@ -66,51 +66,64 @@ class App extends React.Component {
       "Z",
     ],
     numbers: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+
+    defaultMin: true,
+    defaultMayus: true,
+    defaultNum: true,
+
     caracter: 20,
-    password: [],
-    default: true,
   };
 
-  onSubmit = (e) => {
-    e.preventDefault();
+  // onSubmit = (e) => {
+  //   e.preventDefault();
+  //   const valueMin = this.state.defaultMin;
+  //   const valueMayus = this.state.defaultMayus;
+  //   const valueNum = this.state.defaultNum;
 
-    const valueMin = e.target.minuscula.checked;
-    const valueMayus = e.target.mayuscula.checked;
-    const valueNum = e.target.numeros.checked;
+  //   if (valueMin && valueMayus && valueNum) {
+  //     this.setState({
+  //       password: [].concat(this.state.abc, this.state.ABC, this.state.numbers),
+  //     });
+  //   } else if (valueMin && valueMayus && valueNum === false) {
+  //     this.setState({
+  //       password: [].concat(this.state.abc, this.state.ABC),
+  //     });
+  //   } else if (valueMin && valueMayus === false && valueNum === false) {
+  //     this.setState({
+  //       password: [].concat(this.state.abc),
+  //     });
+  //   } else if (valueMin === false && valueMayus && valueNum) {
+  //     this.setState({
+  //       password: [].concat(this.state.ABC, this.state.numbers),
+  //     });
+  //   } else if (valueMin === false && valueMayus && valueNum === false) {
+  //     this.setState({
+  //       password: [].concat(this.state.ABC),
+  //     });
+  //   } else if (valueMin && valueMayus === false && valueNum) {
+  //     this.setState({
+  //       password: [].concat(this.state.abc, this.state.numbers),
+  //     });
+  //   } else if (valueMin === false && valueMayus && valueNum) {
+  //     this.setState({
+  //       password: [].concat(this.state.ABC, this.state.numbers),
+  //     });
+  //   } else if (valueMin === false && valueMayus === false && valueNum) {
+  //     this.setState({
+  //       password: [].concat(this.state.numbers),
+  //     });
+  //   }
+  //};
 
-    if (valueMin && valueMayus && valueNum) {
-      this.setState({
-        password: [].concat(this.state.abc, this.state.ABC, this.state.numbers),
-      });
-    } else if (valueMin && valueMayus && valueNum === false) {
-      this.setState({
-        password: [].concat(this.state.abc, this.state.ABC),
-      });
-    } else if (valueMin && valueMayus === false && valueNum === false) {
-      this.setState({
-        password: [].concat(this.state.abc),
-      });
-    } else if (valueMin === false && valueMayus && valueNum) {
-      this.setState({
-        password: [].concat(this.state.ABC, this.state.numbers),
-      });
-    } else if (valueMin === false && valueMayus && valueNum === false) {
-      this.setState({
-        password: [].concat(this.state.ABC),
-      });
-    } else if (valueMin && valueMayus === false && valueNum) {
-      this.setState({
-        password: [].concat(this.state.abc, this.state.numbers),
-      });
-    } else if (valueMin === false && valueMayus && valueNum) {
-      this.setState({
-        password: [].concat(this.state.ABC, this.state.numbers),
-      });
-    } else if (valueMin === false && valueMayus === false && valueNum) {
-      this.setState({
-        password: [].concat(this.state.numbers),
-      });
-    }
+  handleMinChange = (e) => {
+    this.setState({ defaultMin: e.target.checked });
+  };
+
+  handleMayusChange = (e) => {
+    this.setState({ defaultMayus: e.target.checked });
+  };
+  handleNumChange = (e) => {
+    this.setState({ defaultNum: e.target.checked });
   };
 
   handleRangeChange = (e) => {
@@ -120,42 +133,53 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Generator
-          valores={this.state.password}
-          cantidad={this.state.caracter}
-        />
-        <form onSubmit={this.onSubmit}>
-          <label>
-            <input name="minuscula" type="checkbox"></input>
-            abc
-          </label>
-          <label>
-            <input name="mayuscula" type="checkbox"></input>
-            ABC
-          </label>
-          <label>
-            <input name="numeros" type="checkbox"></input>
-            123
-          </label>
-          <label>
-            <input name="Caracteres" type="checkbox"></input>Caracteres
-          </label>
-          <label>
-            <input
-              id="typeinp"
-              type="range"
-              name="range"
-              min="1"
-              max="50"
-              value={this.state.caracter}
-              onChange={this.handleRangeChange}
-              step="1"
-            />
-            {this.state.caracter}
-          </label>
+        <Generator valores={this.state} />
 
-          <button>Generar</button>
-        </form>
+        <label>
+          <input
+            name="minuscula"
+            type="checkbox"
+            checked={this.state.defaultMin}
+            onChange={this.handleMinChange}
+          ></input>
+          abc
+        </label>
+        <label>
+          <input
+            name="mayuscula"
+            type="checkbox"
+            checked={this.state.defaultMayus}
+            onChange={this.handleMayusChange}
+          ></input>
+          ABC
+        </label>
+        <label>
+          <input
+            name="numeros"
+            type="checkbox"
+            checked={this.state.defaultNum}
+            onChange={this.handleNumChange}
+          ></input>
+          123
+        </label>
+        <label>
+          <input name="Caracteres" type="checkbox"></input>Caracteres
+        </label>
+        <label>
+          <input
+            id="typeinp"
+            type="range"
+            name="range"
+            min="1"
+            max="50"
+            value={this.state.caracter}
+            onChange={this.handleRangeChange}
+            step="1"
+          />
+          {this.state.caracter}
+        </label>
+
+        {/* <button onClick={this.onSubmit}>Generar</button> */}
       </div>
     );
   }
