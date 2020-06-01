@@ -8,11 +8,67 @@ import "./App.css";
 class App extends React.Component {
   state = {
     min: {
-      abc: ["a", "b", "c"],
+      abc: [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+        "h",
+        "i",
+        "j",
+        "k",
+        "l",
+        "m",
+        "n",
+        "ñ",
+        "o",
+        "p",
+        "q",
+        "r",
+        "s",
+        "t",
+        "u",
+        "v",
+        "w",
+        "x",
+        "y",
+        "z",
+      ],
       value: true,
     },
     mayus: {
-      ABC: ["A", "B", "C"],
+      ABC: [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J",
+        "K",
+        "L",
+        "M",
+        "N",
+        "Ñ",
+        "O",
+        "P",
+        "Q",
+        "R",
+        "S",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z",
+      ],
       value: true,
     },
     num: {
@@ -28,6 +84,7 @@ class App extends React.Component {
     //   mayus: { value: e.target.checked },
     //   num: { value: e.target.checked },
     // });
+
     console.log(this.state.min.value);
     console.log(this.state.mayus.value);
     console.log(this.state.num.value);
@@ -96,7 +153,7 @@ class App extends React.Component {
           <input
             id="typeinp"
             type="range"
-            min="20"
+            min="1"
             max="50"
             value={this.state.caracter}
             onChange={this.handleRangeChange}
