@@ -22,6 +22,8 @@ code {
   cursor: pointer;
   color: #333333;
   font-family: Arial;
+  margin-top: 5px;
+  margin-right: 5px;
   font-size: 15px;
   font-weight: bold;
   padding: 6px 24px;

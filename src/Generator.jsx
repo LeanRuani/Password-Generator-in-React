@@ -10,6 +10,7 @@ function Generator({ valores }) {
   const valueNum = valores.defaultNum;
   const valueSimbol = valores.defaultSimbol;
 
+  //Todas las combinaciones dentro del panel
   if (valueMin && valueMayus && valueNum && valueSimbol) {
     password = valores.abc.concat(
       valores.ABC,
@@ -48,11 +49,12 @@ function Generator({ valores }) {
     password = valores.simbolos.concat(valores.abc);
   } else if (valueMin && valueMayus && !valueNum && valueSimbol) {
     password = valores.simbolos.concat(valores.abc, valores.ABC);
-  } else if (!valueMin && !valueMayus && !valueNum && !valueSimbol) {
-    password = ["h"];
+  } else if (valueMin && !valueMayus && valueNum && !valueSimbol) {
+    password = valores.numbers.concat(valores.abc);
   }
 
   for (let i = 0; i < valores.caracter; i++) {
+    //genera nro random para que ése sea selecionado y se agrege a p (la password original)
     const random = Math.floor(Math.random() * password.length);
     p[i] = password[random];
   }

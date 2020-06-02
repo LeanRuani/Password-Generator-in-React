@@ -111,17 +111,49 @@ class App extends React.Component {
   };
 
   handleMinChange = (e) => {
+    //toma el true o el false del checked
     this.setState({ defaultMin: e.target.checked });
+
+    //validacion para que no halla ningun checkbox vacio
+    if (
+      !this.state.defaultMayus &&
+      !this.state.defaultNum &&
+      !this.state.defaultSimbol
+    ) {
+      this.setState({ defaultMin: true });
+    }
   };
 
   handleMayusChange = (e) => {
     this.setState({ defaultMayus: e.target.checked });
+    if (
+      !this.state.defaultMin &&
+      !this.state.defaultNum &&
+      !this.state.defaultSimbol
+    ) {
+      this.setState({ defaultMayus: true });
+    }
   };
   handleNumChange = (e) => {
     this.setState({ defaultNum: e.target.checked });
+    if (
+      !this.state.defaultMin &&
+      !this.state.defaultMayus &&
+      !this.state.defaultSimbol
+    ) {
+      this.setState({ defaultNum: true });
+    }
   };
   handleSimbolChange = (e) => {
     this.setState({ defaultSimbol: e.target.checked });
+
+    if (
+      !this.state.defaultMin &&
+      !this.state.defaultMayus &&
+      !this.state.defaultNum
+    ) {
+      this.setState({ defaultSimbol: true });
+    }
   };
 
   handleRangeChange = (e) => {
