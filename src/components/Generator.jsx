@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import "./index.css";
+import "../index.css";
 
 function Generator({ valores }) {
   var password = [];
@@ -60,35 +60,39 @@ function Generator({ valores }) {
   }
 
   const PasswordStyled = styled.div`
-    width: auto;
-    height: 50px;
-    border: 1px solid black;
-    background-color: white;
-    margin: auto;
     padding: 0px;
-    justify-content: center;
-    p {
+    input[type="text"]:focus {
+      outline: none;
+    }
+    input[type="text"] {
       font-family: "Press Start 2P", cursive;
-      color: ${(props) =>
-        (valores.caracter <= 10 && "#e63e32") ||
-        (valores.caracter <= 19 && "#e6ce32") ||
-        (valores.caracter >= 20 && "#45c940")};
+      font-size: 20px;
+      border: none;
+      margin-left: 10px;
+      color: #545454;
+      padding: 20px 0 0;
+      width: 70%;
+      border-bottom: 2px solid
+        ${(props) =>
+          (valores.caracter <= 10 && "#e63e32") ||
+          (valores.caracter <= 19 && "#e6ce32") ||
+          (valores.caracter >= 20 && "#45c940")};
     }
   `;
 
   return (
     <>
       <PasswordStyled>
-        <p>{p}</p>
+        <input type="text" value={p.join("")}></input>
+        <button
+          className="button-copy"
+          onClick={() => {
+            navigator.clipboard.writeText(p.join(""));
+          }}
+        >
+          📋 Copy
+        </button>
       </PasswordStyled>
-      <button
-        className="button-copy"
-        onClick={() => {
-          navigator.clipboard.writeText(p.join(""));
-        }}
-      >
-        Copiar
-      </button>
     </>
   );
 }
